@@ -26,4 +26,11 @@ contract MyToken is ERC20, Ownable {
         // The amount is already in the smallest units, no need to multiply by decimals
         _burn(msg.sender, amount);
     }
+
+    // Define a function to transfer tokens
+    function transfer(address recipient, uint256 amount) public override returns (bool) {
+        // Call the internal _transfer function to transfer tokens
+        _transfer(_msgSender(), recipient, amount);
+        return true;
+    }
 }
